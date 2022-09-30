@@ -1,0 +1,49 @@
+#Метод ньютона
+
+import math
+import matplotlib.pyplot as plt
+import pylab
+eps=1e-6
+iters=0
+def F(x): #функция
+    return x**3+x**2-x-0.5
+def F1(x): #производная
+    return 3*x**2+2*x-1
+def Newton(a,b):
+    xn = (a+b)/2
+    xn1 = xn - F(xn) / F1(xn)
+    iters=1
+    while abs(xn1-xn) > eps:
+        xn = xn1
+        #print (F(xn))    #для проверки
+        xn1 = xn - F(xn) / F1(xn)
+        if abs(xn1 - xn)<= eps:
+            return xn1, iters
+        iters += 1
+print(Newton(0.8, 0.9))
+
+
+
+
+#Метод простой итерации
+
+import math
+import matplotlib.pyplot as plt
+import pylab
+import numpy as np
+eps=1e-6
+iters=0
+def F(x): #функция
+    return x**3+x**2-x-0.5
+def SimpleIter(a,b):
+    xn = (a+b)/2
+    xn1 = F(xn)
+    iters=1
+    while abs(xn1-xn) > eps:
+        iters += 1
+        xn = xn1
+        xn1 = F(xn)
+    print (xn, F(xn))
+     if abs(xn1 - xn)<= eps:
+    return xn1, iters
+print(SimpleIter(0.8, 0.9))
